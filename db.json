@@ -1,23 +1,6 @@
 {
   "expence": [
     {
-      "amount": 5000,
-      "date": "2025-06-24",
-      "category": {
-        "name": "transport",
-        "code": "transport"
-      },
-      "description": "sample",
-      "type": "",
-      "paymentMethod": {
-        "name": "debit card",
-        "code": "debit card"
-      },
-      "tag": "",
-      "note": "",
-      "id": "5e09"
-    },
-    {
       "id": "6544",
       "amount": 5000,
       "date": "2025-06-24",

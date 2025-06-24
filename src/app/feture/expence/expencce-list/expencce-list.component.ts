@@ -32,4 +32,17 @@ export class ExpencceListComponent implements OnInit {
       }
     });
   }
+
+  deleteExpense(id:string){
+    this.expensesList.deleteExpense(id).subscribe({
+      next: (res) => {
+        console.log("done");
+        
+        this.expense.set(this.expense().filter((expense) => expense.id !== id));
+      },
+      error: (err) => {
+        console.error('Error deleting expense:', err);
+      }
+    });
+  }
 }
