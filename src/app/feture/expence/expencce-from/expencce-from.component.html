@@ -1,5 +1,5 @@
 <p-toast />
-<p-card [style]="{width: '35rem', margin: 'auto', backgroundColor: '#f5f7fa', color: 'black'}" header="+ Add Expenses">
+<p-card [style]="{width: '35rem', margin: 'auto', backgroundColor: '#f5f7fa', color: 'black'}" [header]="isEditMode() ? 'Edit Expenses' : 'Add Expenses'">
     <hr>
     <form [formGroup]="expensesFrom" (ngSubmit)="onSubmit()">
         <div style="display: flex; gap: 2rem;">
@@ -57,7 +57,7 @@
         </div>
         <div class="d-flex justify-content-end g-3">
             <p-button label="cancel" [style]="{ 'margin-right': '1rem' }" [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  />
-            <p-button label="Submit" type="submit" />
+            <p-button [label]="isEditMode() ? 'Update' : 'Add'" type="submit" />
         </div>
     </form>
 </p-card>
