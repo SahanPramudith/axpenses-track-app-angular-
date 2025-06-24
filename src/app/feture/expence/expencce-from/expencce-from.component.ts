@@ -31,7 +31,7 @@ export class ExpencceFromComponent implements OnInit {
   private fb = inject(FormBuilder);
   private route = inject(ActivatedRoute);
   isEditMode = signal(false);
-  id = signal(0) || null;
+  id = signal <string | null>(null);
   expensesFrom!: FormGroup;
   expenceservice = inject(ServiceService);
   private massageService = inject(MessageService);
@@ -52,8 +52,8 @@ export class ExpencceFromComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode.set(true);
-      this.loardExpenses(+id);
-      this.id.set(+id);
+      this.loardExpenses(id);
+      this.id.set(id);
     }
 
   }
@@ -71,7 +71,7 @@ export class ExpencceFromComponent implements OnInit {
     });
   }
 
-  private loardExpenses(id: number) {
+  private loardExpenses(id: string) {
     this.expenceservice.getExpensesById(id).subscribe({
       next: (expenses) => {
         this.expensesFrom.patchValue({
@@ -91,14 +91,22 @@ export class ExpencceFromComponent implements OnInit {
         date: this.expensesFrom.value.date.toISOString().split('T')[0]
       }
 
-      const request$ = this.isEditMode() ? this.expenceservice.updateExpense(this.id(), expensesData) :
-        this.expenceservice.crateExpense(expensesData);
+      let request$;
+      if (this.isEditMode()) {
+        const expenseId = this.id();
+        if (expenseId === null) {
+          throw new Error('Expense ID is null in edit mode');
+        }
+        request$ = this.expenceservice.updateExpense(expenseId, expensesData);
+      } else {
+        request$ = this.expenceservice.crateExpense(expensesData);
+      }
       request$.subscribe({
         next: (expenses) => {
           console.log(expenses);
           this.massageService.add({ severity: 'success', summary: 'Success', detail: 'Expenses created successfully' });     
           this.expensesFrom.reset();
-          this.id.set(0)
+          this.id.set(null)
           this.isEditMode.set(false)
           this.initExpssesFrom()
         }

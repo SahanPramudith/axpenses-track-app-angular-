@@ -17,18 +17,18 @@ export class ServiceService {
     return this.http.get<Expenses>(this.API_URL);
   }
 
-  getExpensesById(id:number){
+  getExpensesById(id:string){
     return this.http.get<Expenses>(`${this.API_URL}/${id}`)
   }
 
   crateExpense(expense:Omit<Expenses,'id'>){
     return this.http.post(this.API_URL,expense);
   }
-  updateExpense(id:number,expense:Expenses){
+  updateExpense(id:string,expense:Expenses){
     return this.http.put(`${this.API_URL}/${id}`,expense);
   }
   
-  deleteExpense(id:number){
+  deleteExpense(id:string){
     return this.http.delete(`${this.API_URL}/${id}`);
   }
 

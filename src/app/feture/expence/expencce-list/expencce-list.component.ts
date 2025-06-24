@@ -4,12 +4,13 @@ import { Expenses } from '../../../core/mdoel/expence.model';
 import { TableModule } from 'primeng/table';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-expencce-list',
   standalone: true,
-  imports: [TableModule,ButtonModule,CurrencyPipe,DatePipe], // Add CommonModule, etc. if needed
+  imports: [TableModule,ButtonModule,CurrencyPipe,DatePipe,RouterLink], // Add CommonModule, etc. if needed
   templateUrl: './expencce-list.component.html',
   styleUrl: './expencce-list.component.css'
 })

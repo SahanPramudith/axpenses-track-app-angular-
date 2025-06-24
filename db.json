@@ -50,6 +50,23 @@
       },
       "tag": "",
       "note": "sample"
+    },
+    {
+      "id": "bb43",
+      "amount": 9,
+      "date": "2025-06-23",
+      "category": {
+        "name": "entertainment",
+        "code": "entertainment"
+      },
+      "description": "asa",
+      "type": "",
+      "paymentMethod": {
+        "name": "paypal",
+        "code": "paypal"
+      },
+      "tag": "",
+      "note": "sasa"
     }
   ]
 }

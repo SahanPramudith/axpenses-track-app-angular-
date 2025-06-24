@@ -19,10 +19,16 @@ export const routes: Routes = [
                 m => m.ExpencceFromComponent),
     },
     {
-        path:'expensesList',
+        path: 'expensesList',
         loadComponent: () =>
             import('./feture/expence/expencce-list/expencce-list.component').then(
                 m => m.ExpencceListComponent),
+    },
+    {
+        path: 'editExpenses/:id/edit',
+        loadComponent: () =>
+            import('./feture/expence/expencce-from/expencce-from.component').then(
+                m => m.ExpencceFromComponent),
     }
 
 

@@ -18,7 +18,7 @@
                 <td>{{ expense.description }}</td>
                 <td>{{ expense.paymentMethod?.name  }}</td>
                 <td>
-                    <p-button label="Update" icon="pi pi-user" [style]="{'margin-right': '0.5rem'}" />
+                    <p-button label="Update" [routerLink]="['/editExpenses',expense.id,'edit']" icon="pi pi-user" [style]="{'margin-right': '0.5rem'}" />
                     <p-button label="Delete" icon="pi pi-user" />
                 </td>
             </tr>
