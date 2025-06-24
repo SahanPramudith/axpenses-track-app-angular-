@@ -1,4 +1,55 @@
 {
- "expence":[]
-     
+  "expence": [
+    {
+      "id": "5e09",
+      "amount": 5000,
+      "date": "2025-06-24",
+      "category": {
+        "name": "utility",
+        "code": "utility"
+      },
+      "description": "sample",
+      "type": "",
+      "paymentMethod": {
+        "name": "debit card",
+        "code": "debit card"
+      },
+      "tag": "",
+      "note": ""
+    },
+    {
+      "id": "6544",
+      "amount": 5000,
+      "date": "2025-06-24",
+      "category": {
+        "name": "entertainment",
+        "code": "entertainment"
+      },
+      "description": "samplesas",
+      "type": "",
+      "paymentMethod": {
+        "name": "credit card",
+        "code": "credit card"
+      },
+      "tag": "",
+      "note": ""
+    },
+    {
+      "id": "6063",
+      "amount": 5000,
+      "date": "2025-06-16",
+      "category": {
+        "name": "utility",
+        "code": "utility"
+      },
+      "description": "samplesa",
+      "type": "",
+      "paymentMethod": {
+        "name": "debit card",
+        "code": "debit card"
+      },
+      "tag": "",
+      "note": "sample"
+    }
+  ]
 }

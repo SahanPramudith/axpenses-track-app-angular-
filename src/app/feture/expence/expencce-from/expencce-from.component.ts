@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ServiceService } from '../../../core/service/service.service';
 import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
 import { ExpenceCategory, Expenses, PaymentMethod } from '../../../core/mdoel/expence.model';
@@ -10,14 +10,21 @@ import { DatePickerModule } from 'primeng/datepicker';
 import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
+import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
 
 
 
 @Component({
   selector: 'app-expencce-from',
-  imports: [CardModule,TextareaModule,InputTextModule ,SelectModule, DatePickerModule, ReactiveFormsModule, InputNumberModule],
+  imports: [CardModule,ToastModule,MessageModule,RouterLink,ButtonModule,TextareaModule,InputTextModule ,SelectModule, DatePickerModule, ReactiveFormsModule, InputNumberModule],
   templateUrl: './expencce-from.component.html',
-  styleUrl: './expencce-from.component.css'
+  styleUrl: './expencce-from.component.css',
+  providers: [MessageService],
 })
 export class ExpencceFromComponent implements OnInit {
 
@@ -27,6 +34,7 @@ export class ExpencceFromComponent implements OnInit {
   id = signal(0) || null;
   expensesFrom!: FormGroup;
   expenceservice = inject(ServiceService);
+  private massageService = inject(MessageService);
 
   category = Object.values(ExpenceCategory).map((category) => ({
     name:category,
@@ -80,13 +88,15 @@ export class ExpencceFromComponent implements OnInit {
     if (this.expensesFrom.valid) {
       const expensesData: Expenses = {
         ...this.expensesFrom.value,
-        date: this.expensesFrom.value.date.toISOString().sprit('T')[0]
+        date: this.expensesFrom.value.date.toISOString().split('T')[0]
       }
 
       const request$ = this.isEditMode() ? this.expenceservice.updateExpense(this.id(), expensesData) :
         this.expenceservice.crateExpense(expensesData);
       request$.subscribe({
         next: (expenses) => {
+          console.log(expenses);
+          this.massageService.add({ severity: 'success', summary: 'Success', detail: 'Expenses created successfully' });     
           this.expensesFrom.reset();
           this.id.set(0)
           this.isEditMode.set(false)
