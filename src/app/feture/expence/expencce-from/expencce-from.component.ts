@@ -4,11 +4,18 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceService } from '../../../core/service/service.service';
 import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
-import { Expenses } from '../../../core/mdoel/expence.model';
+import { ExpenceCategory, Expenses, PaymentMethod } from '../../../core/mdoel/expence.model';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DatePickerModule } from 'primeng/datepicker';
+import { SelectModule } from 'primeng/select';
+import { InputTextModule } from 'primeng/inputtext';
+import { TextareaModule } from 'primeng/textarea';
+
+
 
 @Component({
   selector: 'app-expencce-from',
-  imports: [CardModule, ReactiveFormsModule],
+  imports: [CardModule,TextareaModule,InputTextModule ,SelectModule, DatePickerModule, ReactiveFormsModule, InputNumberModule],
   templateUrl: './expencce-from.component.html',
   styleUrl: './expencce-from.component.css'
 })
@@ -21,6 +28,15 @@ export class ExpencceFromComponent implements OnInit {
   expensesFrom!: FormGroup;
   expenceservice = inject(ServiceService);
 
+  category = Object.values(ExpenceCategory).map((category) => ({
+    name:category,
+    code:category
+  }));
+
+  paymentMethod=Object.values(PaymentMethod).map((payment)=>({
+    name:payment,
+    code:payment
+  }))
 
 
   ngOnInit(): void {
@@ -37,7 +53,7 @@ export class ExpencceFromComponent implements OnInit {
   private initExpssesFrom() {
     this.expensesFrom = this.fb.group({
       amount: [''],
-      data: [''],
+      date: [''],
       category: [''],
       description: [''],
       type: [''],
