@@ -18,8 +18,7 @@
       "note": ""
     },
     {
-      "id": "6063",
-      "amount": 5000,
+      "amount": 50000,
       "date": "2025-06-16",
       "category": {
         "name": "utility",
@@ -32,7 +31,8 @@
         "code": "debit card"
       },
       "tag": "",
-      "note": "sample"
+      "note": "sample",
+      "id": "6063"
     },
     {
       "id": "bb43",
@@ -50,6 +50,40 @@
       },
       "tag": "",
       "note": "sasa"
+    },
+    {
+      "id": "61c8",
+      "amount": 5000000,
+      "date": "2025-07-09",
+      "category": {
+        "name": "food",
+        "code": "food"
+      },
+      "description": "sample1",
+      "type": "",
+      "paymentMethod": {
+        "name": "credit card",
+        "code": "credit card"
+      },
+      "tag": "",
+      "note": "sample"
+    },
+    {
+      "id": "dd34",
+      "amount": 100000,
+      "date": "2025-08-13",
+      "category": {
+        "name": "food",
+        "code": "food"
+      },
+      "description": "SAMPWSDSDSD",
+      "type": "",
+      "paymentMethod": {
+        "name": "debit card",
+        "code": "debit card"
+      },
+      "tag": "",
+      "note": "DSDSDSD"
     }
   ]
 }
