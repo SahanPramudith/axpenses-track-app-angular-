@@ -69,8 +69,7 @@
       "note": "sample"
     },
     {
-      "id": "dd34",
-      "amount": 100000,
+      "amount": 10000000000,
       "date": "2025-08-13",
       "category": {
         "name": "food",
@@ -83,7 +82,8 @@
         "code": "debit card"
       },
       "tag": "",
-      "note": "DSDSDSD"
+      "note": "DSDSDSD",
+      "id": "dd34"
     }
   ]
 }
